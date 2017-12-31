@@ -1,0 +1,111 @@
+.wrapper {
+	max-width: 1140px;
+	width: 100%;
+	margin:0 auto;
+}
+
+.map-intro {
+	margin-bottom: 1rem;
+	p {
+		text-align: center;
+	}
+
+	.map-options, .node-map-options {
+		list-style: none;
+		margin: 0 auto;
+    	width: -webkit-fit-content;
+      	width: -moz-fit-content;
+        width: fit-content;
+		padding:0;
+		text-align: center;
+		li {
+			display: inline-block;
+			padding:5px 0.9375rem;
+			font-size:1.125rem;
+			font-weight: bold;
+			border-right:2px solid #ccc;
+			
+			&:last-child {
+				border-right:none;
+			}
+
+			a {
+				color: #ff671b;
+				display: block;
+				&.active {
+					border-bottom: 2px solid #ff671b;
+				}
+			}
+		}
+	}
+}
+.node-maps {
+	.node-map {
+		display: none;
+		&.active {
+			display: block;
+		}
+		img {
+			max-width: 100%;
+			height:auto;
+		}
+	}
+}
+.wifi-maps {
+	.map {
+		
+		display: none;
+		&.active {
+			display: block;
+		}
+
+		.container {
+		position: relative;
+		height: 0;
+		//padding-top: calc(calc(340 / 767) * 100%);
+		}
+		
+		//svg
+		svg {
+			position: absolute;
+			top:0;
+			left:0;
+			width: 100%;
+			height:auto;
+		}
+
+	}
+	#stt-wifi-map {
+		.container {
+			padding-top: calc(calc(340 / 767) * 100%);
+		}
+	}
+	#stx-wifi-map {
+		.container {
+			padding-top: calc(calc(268 / 751) * 100%);
+		}
+	}
+	#stj-wifi-map {
+		.container {
+			padding-top: calc(calc(404 / 713) * 100%);
+		}
+	}
+}
+
+.hotspot-locations {
+	ul {
+		list-style: none;
+		float: left;
+		padding:0;
+		margin-right: 30px;
+		li {
+			cursor: pointer;
+			padding:5px 0;
+			font-weight: bold;
+
+			&.active {
+				color: #ff671b;
+			}
+		}
+	}
+}
