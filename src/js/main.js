@@ -4,7 +4,8 @@ var nodes = new Array();
 var island = "";
 
 $(document).ready(function() {
-
+    //initiate map zooms
+    
 	//maps
 	$('.map-option a').on('click', function() {
         
