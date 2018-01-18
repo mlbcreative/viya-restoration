@@ -9,64 +9,31 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-
-        <div class="wrapper">
-            <h1> NODE MAPS: Everything below this header goes on Restoration Page.</h1>
-            <div class="map-intro">
-                <p class="select-msg">
-                    Select island to view service status.
-                </p>
-                <ul class="node-map-options">
-                   <li><a href="#" class="node-map-toggle active" data-map="stt">St. Thomas</a></li>
-                   <li><a href="#" class="node-map-toggle" data-map="stx">St. Croix</a></li>
-                   <li><a href="#" class="node-map-toggle" data-map="stj">St. St. John</a></li>
-                </ul>
-            </div>
-            <div class="node-maps">
-                <div class="node-map active" id="stt-node-map">
-                    <img src="img/STT_Node_Map@2x_20171220.jpg" alt="StThomas" />
-                </div>
-                <div class="node-map" id="stx-node-map">
-                    <img src="img/STX_Node_Map@2x_20171220.jpg" alt="StCroix" />
-                </div>
-                <div class="node-map" id="stj-node-map">
-                    <img src="img/STJ_Node_Map@2x_20171220.jpg" alt="StJohn" />
-                </div>
-            </div>
-        </div>
         
-        <div class="wrapper">
-            <h1> WiFi MAPS: Everything below this header goes on Restoration Page.</h1>
-            <div class="map-intro">
-                <p class="select-msg">
-                    Select island to view public WiFi locations.
-                </p>
-                <ul class="map-options">
-                   <li><a href="#" class="map-toggle active" data-map="stt">St. Thomas</a></li>
-                   <li><a href="#" class="map-toggle" data-map="stx">St. Croix</a></li>
-                   <li><a href="#" class="map-toggle" data-map="stj">St. John</a></li>
-                </ul>
-            </div>
+        <partial src="_header.html"></partial>
+        
+        <partial src="_page-top.html"></partial>
+        <!-- Service Status -->
+        
+        <partial src="_service-status.html"></partial>
+        
+<!--        .Service Status-->
+        
+        <div class="container">
             
-            <div class="wifi-maps">
-                <div class="map active" id="stt-wifi-map">
-                       <partial src="_stt.html" title="St. Thomas"></partial>
-                </div>
-                 <div class="map" id="stx-wifi-map">
-                       <partial src="_stx.html" title="St. Croix"></partial>
-                </div>
-                <div class="map" id="stj-wifi-map">
-                       <partial src="_stj.html" title="St. John"></partial>
-                </div>
-            </div>
         </div>
 
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.180.0.min.js"></script>
+        <script src="js/vendor/vendors.js"></script>
+<!--
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
+-->
 
         <script src="js/main.js"></script>
     </body>

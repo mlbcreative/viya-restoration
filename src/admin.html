@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body data-pagename="admin">
+        
+        <partial src="_admin-header.html"></partial>
+        
+        <!-- Service Status -->
+        
+        <partial src="_admin-login.html"></partial>
+        
+<!--        .Service Status-->
+        
+        <div class="container" id="nodeEditor">
+            <div class="row">
+                <div class="col">
+                    
+                    <h5>Welcome to the Viya USVI Restoration Admin Panel</h5>
+                    <p>From here you can update the status of each node in the USVI. To get started, please pick the island you'd like to update.</p>
+                    
+                    <select id="islandPicker">
+                        <option>Choose an island</option>
+                        <option value="stt">St.Thomas</option>
+                        <option value="stx">St.Croix</option>
+                        <option value="stj">St.John</option>
+                    </select>
+                
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                
+                    <table id="nodeList" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Node Name</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                            <th>Edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal -->
+<div class="modal fade" id="nodeModal" tabindex="-1" role="dialog" aria-labelledby="nodeLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="nodeLabel">Node Editor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Node Status</label>
+        <select id="nodeStatusSelect">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+            <option value="Scheduled">Scheduled</option> 
+        </select>
+          <label>Additional Notes</label>
+          <textarea id="nodeInfoUpdate" placeholder="Any additional information about the node goes here."></textarea>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="updateNode">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.180.0.min.js"></script>
+        <script src="js/vendor/vendors.js"></script>
+<!--
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
+-->
+
+        <script src="js/admin.js"></script>
+    </body>
+</html>

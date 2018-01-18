@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mlbcreative/viya-restoration#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0-beta.3",
     "browser-sync": "^2.19.0",
     "gulp-html-partial": "^1.0.1",
     "jquery": "^3.2.1"
@@ -24,8 +25,14 @@
   "devDependencies": {
     "autoprefixer": "^7.2.3",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1"
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "jquery.zoomz": "^1.0.3",
+    "js-autocomplete": "^1.0.4",
+    "popper.js": "^1.12.9",
+    "pump": "^2.0.0"
   }
 }

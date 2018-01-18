@@ -1,11 +1,12 @@
-var gulp        = require('gulp'),
+var gulp    = require('gulp'),
 browserSync = require('browser-sync').create(),
 sass        = require('gulp-sass'),
 postcss      = require('gulp-postcss'),
 sourcemaps   = require('gulp-sourcemaps'),
 autoprefixer = require('autoprefixer'),
-htmlPartial = require('gulp-html-partial');
-
+htmlPartial = require('gulp-html-partial'),
+concat = require('gulp-concat'),
+uglify = require('gulp-uglify');
 
 //html
 gulp.task('html', function() {
@@ -21,9 +22,7 @@ gulp.task('sass', function() {
     var config = {
         sass: {
             outputStyle: 'compressed',
-            includePaths : [
-	            //'./node_modules/bootstrap/scss/'
-            ]
+            includePaths : ['./node_modules/bootstrap/scss/']
         },
         autoprefixer: {
             browsers: ['last 5 versions']
@@ -46,7 +45,15 @@ gulp.task('js', ['js-vendor'], function() {
 })
 
 gulp.task('js-vendor', function(){
-	return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'src/js/vendor/*.js'])
+	return gulp.src(['node_modules/jquery/dist/jquery.min.js',
+                     'node_modules/popper.js/dist/umd/popper.js',
+                     'node_modules/bootstrap/dist/js/bootstrap.js',
+                     'src/js/vendor/aws-cognito-sdk.min.js',
+                     'src/js/vendor/amazon-cognito-identity.min.js',
+                     'node_modules/js-autocomplete/auto-complete.js',
+                     'src/js/vendor/*.js'])
+    .pipe(concat('vendors.js'))
+    .pipe(uglify()) 
 	.pipe(gulp.dest('build/js/vendor'));
 })
 

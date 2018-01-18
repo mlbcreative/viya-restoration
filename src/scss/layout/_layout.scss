@@ -1,111 +1,404 @@
-.wrapper {
-	max-width: 1140px;
-	width: 100%;
-	margin:0 auto;
+body {
+	background:#FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9375rem;
 }
 
-.map-intro {
-	margin-bottom: 1rem;
-	p {
-		text-align: center;
-	}
-
-	.map-options, .node-map-options {
-		list-style: none;
-		margin: 0 auto;
-    	width: -webkit-fit-content;
-      	width: -moz-fit-content;
-        width: fit-content;
-		padding:0;
-		text-align: center;
-		li {
-			display: inline-block;
-			padding:5px 0.9375rem;
-			font-size:1.125rem;
-			font-weight: bold;
-			border-right:2px solid #ccc;
-			
-			&:last-child {
-				border-right:none;
-			}
-
-			a {
-				color: #ff671b;
-				display: block;
-				&.active {
-					border-bottom: 2px solid #ff671b;
-				}
-			}
-		}
-	}
-}
-.node-maps {
-	.node-map {
-		display: none;
-		&.active {
-			display: block;
-		}
-		img {
-			max-width: 100%;
-			height:auto;
-		}
-	}
-}
-.wifi-maps {
-	.map {
-		
-		display: none;
-		&.active {
-			display: block;
-		}
-
-		.container {
-		position: relative;
-		height: 0;
-		//padding-top: calc(calc(340 / 767) * 100%);
-		}
-		
-		//svg
-		svg {
-			position: absolute;
-			top:0;
-			left:0;
-			width: 100%;
-			height:auto;
-		}
-
-	}
-	#stt-wifi-map {
-		.container {
-			padding-top: calc(calc(340 / 767) * 100%);
-		}
-	}
-	#stx-wifi-map {
-		.container {
-			padding-top: calc(calc(268 / 751) * 100%);
-		}
-	}
-	#stj-wifi-map {
-		.container {
-			padding-top: calc(calc(404 / 713) * 100%);
-		}
-	}
+a {
+	text-decoration: none;
 }
 
-.hotspot-locations {
-	ul {
-		list-style: none;
-		float: left;
-		padding:0;
-		margin-right: 30px;
-		li {
-			cursor: pointer;
-			padding:5px 0;
-			font-weight: bold;
-
-			&.active {
-				color: #ff671b;
-			}
-		}
-	}
+img {
+    max-width: 100%;
+    height: auto;
 }
+
+input[type="email"], input[type="password"] {
+    border-radius: 5px;
+    padding:6px 10px;
+    width: 100%;
+}
+
+label {
+    padding-left:0;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    position: relative;
+    .top {
+        padding:3px 0;
+        color: white;
+        background-color: $viyablue;
+        
+        a{
+            color: white;
+        }
+    }
+    
+    .masthead {
+        padding:5px 0;
+    }
+}
+
+#pageTop {
+    
+    padding-bottom: 1.875rem;
+    
+    .hero {
+        height: auto;
+        position: relative;
+        background: url(../img/top-banner-bg.jpg);
+        padding:45px;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        @include media-breakpoint-up(md) {
+            height: 340px;
+            padding:0;
+        }
+    }
+    
+    .hero-content {
+        
+        position:relative;
+        text-align: center;
+        
+        p {
+            font-size: 24px;
+            font-weight: 600;
+            color: $viyagray;
+            margin-top: 1.5rem;
+        }
+        
+    }
+    
+    .jump {
+        position: relative;
+        
+        .txt {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            padding-left:1.875rem;
+            padding-right:1.875rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            p {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: white;
+                text-shadow: 2px 3px 4px rgba(0,0,0,0.5);
+            }
+        }
+    }
+    
+    .push-down {
+        margin-top: 1.875rem;
+    }
+}
+
+#serviceStatus {
+    .container {
+        border-top:3px solid $viyaorange;
+        padding-top:2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    
+    h2 {
+        font-weight: 700;
+        color: $viyablue;
+        text-align: center;
+        
+        @include media-breakpoint-up(lg) {
+         //text-align: left;   
+        }
+    }
+    
+    .subhead {
+        text-align: center;
+        font-weight: 600;
+        @include media-breakpoint-up(md) {
+         //text-align: left;   
+        }
+        &.orange {
+            color:$viyaorange;
+        }
+    }
+    
+    .direction-txt {
+        font-size: 0.8125rem;
+        //color: $viyaorange;
+    }
+    
+    .steps {
+        padding-top:30px;
+        padding-bottom:30px;
+        border-top:1px solid #d4d4d4;
+        
+        @include media-breakpoint-up(md) {
+            border-top:none;
+        }
+        p {
+            span {
+            display: block;
+            font-size: 1.125rem;
+            color: $viyaorange;
+            line-height: 1.6;
+            text-align: left;
+            }
+                
+            
+            font-weight: 600;
+            &.body-txt {
+                font-weight: 400;
+            }    
+        }
+        
+    }
+    
+    .key {
+        padding-top: 30px;
+        .row {
+             margin-bottom: 0.9375rem;
+            font-weight: 600;
+        }
+    }
+    
+    .map-options {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        .map-option {
+            flex-shrink: 1;
+            border-right:2px solid $viyagray;
+            
+            &:last-child {
+                border-right: none;
+            }
+            
+            a {
+                display: block;
+                padding:3px 15px;
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: $viyagray;
+                
+                &.active {
+                    color: $viyaorange;
+                }
+            }
+        }
+    }
+    
+    #nodeMaps {
+        .node-map {
+            display:none;
+            
+            &.active {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+    
+    #step2, #step3 {
+        display:none;
+    }
+    
+    select {
+        height:40px;
+        line-height: 40px;
+        width: 100%;
+        
+        @include media-breakpoint-up(md) {
+            width: auto;
+        }
+    }
+    
+    .nodeInfo {
+        padding:0.9375rem;
+        border:1px solid #d4d4d4;
+        border-radius: 5px;
+        margin-bottom: 0.9375rem;
+        background: #f3f3f3;
+        line-height: 2;
+        strong {
+            //color: $viyaorange;
+        }
+    }
+    
+}
+
+
+#adminLogin {
+    display: none;
+    
+    p {
+        margin-bottom: 0;
+    }
+    
+    input[type="submit"] {
+        margin-top: 15px;
+    }
+}
+
+#nodeEditor {
+    display: none;
+    
+    #nodeList {
+        margin:30px 0;
+        tr {
+            border-bottom: 1px solid #d4d4d4;
+            &:nth-child(even) {
+                background: #f3f3f3;
+                
+            }
+            
+            td,th {
+                padding:6px;
+                font-size: 0.875rem;
+            }
+        }
+    }
+}
+
+#nodeModal {
+    select {
+        margin-bottom: 15px;
+    }
+    textarea {
+        width: 100%;
+    }
+}
+
+//AUTOCOMPLETE
+.autocomplete-suggestions {
+    text-align: left; cursor: default; border: 1px solid #ccc; border-top: 0; background: #fff; box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+
+    /* core styles should not be changed */
+    position: absolute; display: none; z-index: 9999; max-height: 254px; overflow: hidden; overflow-y: auto; box-sizing: border-box;
+}
+.autocomplete-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.02em; color: #333; }
+.autocomplete-suggestion b { font-weight: normal; color: #1f8dd6; }
+.autocomplete-suggestion.selected { background: #f0f0f0; }
+
+
+//.wrapper {
+//	max-width: 1140px;
+//	width: 100%;
+//	margin:0 auto;
+//}
+//
+//.map-intro {
+//	margin-bottom: 1rem;
+//	p {
+//		text-align: center;
+//	}
+//
+//	.map-options, .node-map-options {
+//		list-style: none;
+//		margin: 0 auto;
+//    	width: -webkit-fit-content;
+//      	width: -moz-fit-content;
+//        width: fit-content;
+//		padding:0;
+//		text-align: center;
+//		li {
+//			display: inline-block;
+//			padding:5px 0.9375rem;
+//			font-size:1.125rem;
+//			font-weight: bold;
+//			border-right:2px solid #ccc;
+//			
+//			&:last-child {
+//				border-right:none;
+//			}
+//
+//			a {
+//				color: #ff671b;
+//				display: block;
+//				&.active {
+//					border-bottom: 2px solid #ff671b;
+//				}
+//			}
+//		}
+//	}
+//}
+//.node-maps {
+//	.node-map {
+//		display: none;
+//		&.active {
+//			display: block;
+//		}
+//		img {
+//			max-width: 100%;
+//			height:auto;
+//		}
+//	}
+//}
+//.wifi-maps {
+//	.map {
+//		
+//		display: none;
+//		&.active {
+//			display: block;
+//		}
+//
+//		.vya-container {
+//		position: relative;
+//		height: 0;
+//		//padding-top: calc(calc(340 / 767) * 100%);
+//		}
+//		
+//		//svg
+//		svg {
+//			position: absolute;
+//			top:0;
+//			left:0;
+//			width: 100%;
+//			height:auto;
+//		}
+//
+//	}
+//	#stt-wifi-map {
+//		.vya-container {
+//			padding-top: calc(calc(340 / 767) * 100%);
+//		}
+//	}
+//	#stx-wifi-map {
+//		.vya-container {
+//			padding-top: calc(calc(268 / 751) * 100%);
+//		}
+//	}
+//	#stj-wifi-map {
+//		.vya-container {
+//			padding-top: calc(calc(404 / 713) * 100%);
+//		}
+//	}
+//}
+//
+//.hotspot-locations {
+//	ul {
+//		list-style: none;
+//		float: left;
+//		padding:0;
+//		margin-right: 30px;
+//		li {
+//			cursor: pointer;
+//			padding:5px 0;
+//			font-weight: bold;
+//
+//			&.active {
+//				color: #ff671b;
+//			}
+//		}
+//	}
+//}
