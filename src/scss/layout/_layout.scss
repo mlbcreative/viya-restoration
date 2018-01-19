@@ -51,9 +51,26 @@ header {
     }
 }
 
+.social {
+        color: $viyablue;
+        display: inline-block;
+    }
+
 #pageTop {
     
     padding-bottom: 1.875rem;
+    
+    
+    #billingUpdate.btn {
+        background: $viyaorange;
+        color: white;
+        border-radius: 0;
+        display: block;
+        font-weight: 600;
+        text-shadow: 2px 3px 6px rgba(0,0,0,0.5);
+        margin-bottom: 2rem;
+        height: 42px;
+    }
     
     .hero {
         height: auto;
@@ -118,8 +135,8 @@ header {
             width: 100%;
             height: 100%;
             text-align: center;
-            padding-left:1.875rem;
-            padding-right:1.875rem;
+            padding-left:2.25rem;
+            padding-right:2.25rem;
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -128,6 +145,7 @@ header {
                 font-weight: 700;
                 color: white;
                 text-shadow: 2px 3px 4px rgba(0,0,0,0.5);
+                margin: 0 auto;
             }
             @include media-breakpoint-up(md) {
                 text-align: left;
@@ -251,8 +269,13 @@ header {
         }
     }
     
-    #step3 {
+    #step3, #stjMessage {
         display:none;
+        
+        h3 {
+            font-weight: 600;
+            color: $viyablue;
+        }
     }
     
     select {

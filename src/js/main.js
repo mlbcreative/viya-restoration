@@ -50,17 +50,24 @@ $(document).ready(function() {
     //auto complete and estate lookup
     
     $('#islandSelect').on('change', function() {
-        
+       
+        $('#stjMessage').hide();
+        $('#step2').show();
        island = $(this).val();
         
         //empty current estate array
         estates.length = 0;
         
         if(island == "stj") {
+            $('#step2').hide();
+            $('#stjMessage').show();
+            estates.length = 0;
             return;
+        } else {
+            getEstates(island);
         }
         
-        getEstates(island);
+        
         
     })
     
