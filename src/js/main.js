@@ -3,6 +3,21 @@ var estates = new Array();
 var nodes = new Array();
 var island = "";
 
+//native scrolling
+
+$('.jump.status').on('click', function() {
+    $(window).scrollTo('#serviceStatus', 330);
+})
+
+$('.jump.wifi').on('click', function() {
+     $(window).scrollTo('#freeWifi', 330);
+})
+
+$('.jump.mifi').on('click', function() {
+     $(window).scrollTo('#mifi', 330);
+})
+
+
 $(document).ready(function() {
     //initiate map zooms
     

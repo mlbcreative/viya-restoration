@@ -30,6 +30,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
+    "jquery.scrollto": "^2.1.2",
     "js-autocomplete": "^1.0.4",
     "popper.js": "^1.12.9",
     "pump": "^2.0.0",

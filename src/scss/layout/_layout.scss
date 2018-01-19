@@ -108,7 +108,7 @@ header {
         
         min-height: 200px;
         background-color: $viyaorange;
-        
+        cursor: pointer;
         
         @include media-breakpoint-down(md) {
             margin-bottom: 1.875rem;
@@ -322,6 +322,11 @@ header {
         &.active {
             display: block;
         }
+        
+        p {
+            font-size: 1.825rem;
+            color: $viyaorange;
+        }
     }
 }
 
@@ -459,6 +464,20 @@ footer {
     padding:40px 0;
     background: $viyablue;
     
+    .legal {
+     color:white;
+        font-size: 0.75rem;
+    }
+    
+    a {
+        color: white;
+        &:link, &:visited {
+            color: white;
+        }
+        &:hover{
+            color: rgba(255,255,255, 0.5);
+        }
+    }
 }
 
 //AUTOCOMPLETE
