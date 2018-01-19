@@ -51,6 +51,7 @@ gulp.task('js-vendor', function(){
                      './src/js/vendor/aws-cognito-sdk.min.js',
                      './src/js/vendor/amazon-cognito-identity.min.js',
                      './node_modules/js-autocomplete/auto-complete.js',
+                     './node_modules/zooming/build/zooming.js',
                      'src/js/vendor/*.js'])
     .pipe(concat('vendors.js'))
     .pipe(uglify()) 

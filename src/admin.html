@@ -41,7 +41,10 @@
             </div>
             
             <div class="row">
-                <div class="col">
+                <div class="col-12 add-node">
+                    <button id="newNodeBtn"><img src="img/add_node_btn.png" alt="add node" /></button>Add new node.
+                </div>
+                <div class="col-12">
                 
                     <table id="nodeList" width="100%">
                         <thead>
@@ -61,8 +64,8 @@
             </div>
         </div>
         
-        <!-- Modal -->
-<div class="modal fade" id="nodeModal" tabindex="-1" role="dialog" aria-labelledby="nodeLabel" aria-hidden="true">
+        <!-- Update Modal -->
+<div class="modal fade" id="nodeModal" tabindex="-1" role="dialog" aria-labelledby="nodeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,9 +77,9 @@
       <div class="modal-body">
         <label>Node Status</label>
         <select id="nodeStatusSelect">
-            <option value="off">Ready for Intstall</option>
-            <option value="on">Restoration in Progress</option>
-            <option value="Scheduled">Clean Up</option> 
+            <option value="Ready">Ready</option>
+            <option value="In Progess">In Progress</option>
+            <option value="Clean Up">Clean Up</option> 
         </select>
           <label>Additional Notes</label>
           <textarea id="nodeInfoUpdate" placeholder="Any additional information about the node goes here."></textarea>
@@ -85,6 +88,36 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="updateNode">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- ADD MODAL -->
+<div class="modal fade" id="nodeModalAdd" tabindex="-1" role="dialog" aria-labelledby="nodeModalAddLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="nodeLabel">Node Editor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Node Id<br />(enter single digit numbers with a leading zero. Ex: "01")</label>
+        <input type="text" id="nodeIdInput" placeholder="Area + Node number. Ex: CHE01">
+        <label>Node Status</label>
+        <select id="nodeStatusSelect2">
+            <option value="Ready">Ready</option>
+            <option value="In Progess">In Progress</option>
+            <option value="Clean Up">Clean Up</option> 
+        </select>
+          <label>Additional Notes</label>
+          <textarea id="nodeInfoUpdate2" placeholder="Any additional information about the node goes here."></textarea>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addNode">Save changes</button>
       </div>
     </div>
   </div>

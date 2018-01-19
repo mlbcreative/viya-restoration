@@ -1,4 +1,4 @@
-<div id="serviceStatus">
+<div id="serviceStatus" class="section">
     
     <div class="container">
     
@@ -13,46 +13,30 @@
             
         </div>
         
-         <div class="row d-none d-md-block">
-            <div class="col-12 text-center">
-                
-                <div class="map-options">
-                    <div class="map-option"><a href="#" data-map="stt" class="active">St. Thomas</a></div>
-                    <div class="map-option"><a href="#" data-map="stx">St. Croix</a></div>
-                    <div class="map-option"><a href="#" data-map="stj">St. John</a></div>
-                </div>
-                
-             </div>
-             
-             <div class="col-12" id="nodeMaps">
-                <img data-zoomz="img/STT_Node_Map@2x_20171220.jpg" src="img/STT_Node_Map_20171220.jpg" data-mapid="stt" alt="St. Thomas" class="node-map active" />
-                <img src="img/STX_Node_Map@2x_20171220.jpg" data-mapid="stx" alt="St. Thomas" class="node-map" />
-                <img src="img/STJ_Node_Map@2x_20171220.jpg" data-mapid="stj" alt="St. Thomas" class="node-map" />
-             </div>
-             
-        </div>
         
         <div class="row">
             
+<!--
             <div class="col-12 col-lg-3 key">
                 <div class="row  align-items-center">
-                    <div class="col-3"><img src="img/orange-circle.png" /></div>
+                    <div class="col-2 col-md-3"><img src="img/orange-circle.png" /></div>
                     <div class="col">Ready for Install</div>
                 </div>
                  <div class="row align-items-center">
-                    <div class="col-3"><img src="img/blue-circle.png" /></div>
+                    <div class="col-2 col-md-3"><img src="img/blue-circle.png" /></div>
                     <div class="col">Restoration In Progress</div>
                 </div>
                  <div class="row align-items-center">
-                    <div class="col-3"><img src="img/white-circle.png" /></div>
+                    <div class="col-2 col-md-3"><img src="img/white-circle.png" /></div>
                     <div class="col">Clean Up</div>
                 </div>
             </div>
+-->
                         
-            <div class="col-12 col-lg-9">
+            <div class="col-12 col-lg-12">
             
                 <div class="row">
-                    <div class="col-12 col-md-5 steps" id="step1">
+                    <div class="col-12 col-md-5 col-lg-3 steps" id="step1">
                         <p>
                             <span>Step 1</span>
                             What island do you live on?
@@ -65,20 +49,21 @@
                         </select>
                     </div>
             
-                <div class="col-12 col-md-6 steps" id="step2">
+                <div class="col-12 col-md-6 col-lg-9 steps" id="step2">
                     <p>
                         <span>Step 2</span>
-                        What estate is your primary residence located in?
+                        What estate is your primary residence or business located in? 
                     </p>
 
-                    <input type="text" id="estateInput" name="estateInput">
+                    <input type="text" id="estateInput" name="estateInput" placeholder="Ex: Agnes Fancy">
                 </div>
 
                 <div class="col-12 steps" id="step3">
                     <p>
                         <span>Restoration Status</span>
                     </p>
-                    <p class="body-txt">Nodes connect all of the private residences and businesses in your estate to the internet. During the restoration process, nodes must be restored before the connection to your home or business can be completed. The nodes listed below provide Internet, TV and phone service to your estate.</p>
+                    <p class="body-txt">Nodes connect all of the private residences and businesses in your estate to the internet. During the restoration process, nodes must be restored before the connection to your home or business can be completed. The nodes listed below provide Internet, TV and phone service to your estate. Nodes are colored by which PHASE of the Restoration Process they are in as outlined above.  If you have trouble identifying which node you are located in please contact Viya Customer Service at 340-777-VIYA (8492) and they will be able to inform you.
+* Information subject to change.</p>
                     <div id="nodeList" class="row"></div>
                 </div>
 

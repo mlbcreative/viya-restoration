@@ -13,13 +13,16 @@ $(document).ready(function() {
         
         $(this).addClass('active');
         
-        var location = $(this).data('map');
+        var location = $(this).data('map-target');
         
         console.log(location);
         
-        $('.node-map').removeClass('active');
+        $('.wifi-map').removeClass('active');
+        $('div[data-wifi-locations]').removeClass('active');
         
-        $('img[data-mapid="' + location + '"]').addClass('active');
+        $('.wifi-map[data-map="' + location + '"]').addClass('active');
+        $('div[data-wifi-locations="' + location + '"]').addClass('active');
+        
         
         return false;
     })
@@ -53,15 +56,18 @@ $(document).ready(function() {
         //empty current estate array
         estates.length = 0;
         
+        if(island == "stj") {
+            return;
+        }
+        
         getEstates(island);
         
     })
     
     function getEstates(i) {
         
-        var island = i;
-        var endpoint = island + "-estates";
-        var url = "https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/" + endpoint;
+        island = i;
+        var url = "https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/estates?island=" + island;
         
         //get the data
         $.ajax({
@@ -69,6 +75,9 @@ $(document).ready(function() {
             dataType:'json',
             method : 'GET',
         }).done(function(data) {
+            //clear array
+            estates = [];
+            
             estates = data.estates;
            
             var estateNames = new Array();
@@ -77,7 +86,7 @@ $(document).ready(function() {
                 estateNames.push(estates[i]['estate_name']);
             }
             
-            $('#step2').show();
+            $('#step2').addClass('active');
             
             //autocomplete happens here
             //var estateField = $('#estateInput')[0];
@@ -126,14 +135,11 @@ $(document).ready(function() {
         //stringify the data for the api call
         
         var data = {
+            island : island,
             nodes : nodeIds
         }
     
-        
-        
-        
-        var endpoint = island + "-estates/nodes";
-        var url = "https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/" + endpoint;
+        var url = "https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/estates/nodes";
         
         $.ajax({
             url : url,
@@ -145,26 +151,55 @@ $(document).ready(function() {
                 
                 //empty the nodList display
                 $('#nodeList').empty();
-                
+                //vars
                 var selectedNodes = data.nodes;
                 var nodeDisplay = "";
                 
+
                 for(var i=0; i < selectedNodes.length; i++) {
-                    //console.log(selectedNodes[i]);
+                    
+                    console.log(i.toString());
                     var status = selectedNodes[i].status;
-                    nodeDisplay = '<div class="col-12 col-lg-6">'
+                    var imgThumbUrl = 'img/' + island.toUpperCase() + '-80.jpg';
+                    var imgOriginUrl = 'img/' + island.toUpperCase() + '@2x-80.jpg';
+                    var islandImg = new Image();
+                    
+                    nodeDisplay = '<div class="col-12 col-md-6 col-lg-3">'
                     nodeDisplay += '<div class="nodeInfo">';
                     nodeDisplay += '<strong>Node: ' + selectedNodes[i].node_id + '</strong><br />';
                     nodeDisplay += '<strong>Status: </strong>' + status.toUpperCase() + '<br />';
                     nodeDisplay += '<strong>Additional Information: </strong><br />';
                     nodeDisplay += '<p class="body-txt">' + selectedNodes[i].notes + '</p>';
-                    nodeDisplay += '<p><a href="#" data-toggle="modal" data-target="#nodeMapModal">View Map</a></p>';
+                    nodeDisplay += '<p>View Map<br /><a href="' + imgOriginUrl + '" id="islandImg_' + i.toString() + '">';
+                    
+                    nodeDisplay += '</a></p>';
                     nodeDisplay += '</div></div>';
                     
                     $('#step3').show();
+                    
                     $('#nodeList').append(nodeDisplay);
                     
+                    var imgTarget = document.getElementById('islandImg_' + i.toString());
+                    var image = document.createElement("img");
+                    image.setAttribute("data-action", "zoom");
+                    image.setAttribute("class", "zoomable");
+                    image.setAttribute("src", imgThumbUrl);
+                    imgTarget.appendChild(image);
+                    
                 }
+                
+                
+                var zooming = new Zooming({
+                    bgColor : 'rgba(255,255,255,0.9)',
+                    onBeforeOpen : function() {
+                      //$('.zoomable').show();  
+                    },
+                    onBeforeClose : function() {
+                        $('#nodeMapModal').modal('hide');
+                    }
+                });
+                zooming.listen('.zoomable');
+                
                 //console.log(nodeDisplay);
                 
                 

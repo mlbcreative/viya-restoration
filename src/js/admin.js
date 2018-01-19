@@ -1,5 +1,5 @@
 //ADMIN Authorization
-
+var island = "";
 
 
 AWSCognito.config.region = 'us-east-1';
@@ -121,38 +121,34 @@ if( $('body').data("pagename") == 'admin') {
     } else {
         $('#adminLogin').show();
     }
-
+    //SELECT YOUR ISLAND
     $('#islandPicker').on('change', function() {
         option = $(this).val();
         
         //clear any existing data
         $('#nodeList tbody').empty();
-        
+        $('.add-node').show();
         getNodes(option);
     })
     
     
     var currentNode = "";
     
-    function getNodes(island) {
-        
-        var endpoint = "";
-        
-        switch(island){
-            case "stt":
-                endpoint = "stt-nodes"; 
-                break;
-            default:
-                endpoint = "stt"; 
-                break;
-        }
-        
+    function getNodes(i) {
+        island = i;
+                
         $.ajax({
-            url : 'https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/' + endpoint,
+            url : 'https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/nodes?island=' + island,
             method: 'GET',
             dataType : 'json'
         }).done(function(data) {
-            listNodes(data);
+            
+            if(data.nodes.length < 1 || data.nodes.length == 0) {
+                $('#nodeList tbody').append('<tr><td colspan="4"><strong class="orange">There are no nodes associated with this island.</strong></td></tr>');
+                return;
+            } else {
+                listNodes(data);
+            }
         })
     }
     
@@ -180,11 +176,16 @@ if( $('body').data("pagename") == 'admin') {
             
             $('body').off('click').on('click', '.editLink', function() {
         
-                currentNode = $(this).data("node");
-                //console.log(currentNode);
+                var id = $(this).data("node");
                 
-                $('#nodeLabel').text("Editing Node " + currentNode);
+                for(var i=0; i < nodes.length; i++) {
+                    if( nodes[i].node_id == id ) {
+                        currentNode = nodes[i];
+                    }
+                }
                 
+                $('#nodeLabel').text("Editing Node " + currentNode.node_id);
+                $('#nodeInfoUpdate').val(currentNode.notes);
                 //open the modal
                 $('#nodeModal').modal();
 
@@ -194,21 +195,74 @@ if( $('body').data("pagename") == 'admin') {
         }
     }
     
+    $('#newNodeBtn').on('click', function() {
+        $('#nodeModalAdd').modal('toggle');
+        
+    })
+    
+    $('#addNode').on('click', function() { 
+       //format the data
+        
+        
+        var nodeData = {
+            island : island,
+            node_id : $('#nodeIdInput').val(),
+            notes : $('#nodeInfoUpdate2').val(),
+            status : $('#nodeStatusSelect2').val(),
+        }
+        
+        if ( nodeData.notes.length == 0 ) {
+            alert("Please add a comment to the notes section.");
+            return;
+        }
+        
+        //submit the data
+        
+        $.ajax({
+            url : 'https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/nodes',
+            dataType : 'json',
+            method : 'POST',
+            'headers' : {
+                'Authorization' : idToken,
+            },
+            contentType: 'application/json',
+            data : JSON.stringify(nodeData),
+            success : function(data) {
+                alert(data.message); 
+                
+                //hide the modal
+                $('#nodeModalAdd').modal('hide');
+                //empty the list and re-pull the updated data
+                $('#nodeList tbody').empty();
+                //empty the text field
+                $('#nodeInfoUpdate').val('');
+                getNodes( $('#islandPicker').val() );
+            }
+        });
+        
+    });
+    
     
     
     $('#updateNode').on('click', function() { 
        //format the data
         
+        
         var nodeData = {
-            "node_id" : currentNode,
-            "notes" : $('#nodeInfoUpdate').val(),
-            "status" : $('#nodeStatusSelect').val(),
+            island : island,
+            node_id : currentNode.node_id,
+            notes : $('#nodeInfoUpdate').val(),
+            status : $('#nodeStatusSelect').val(),
+        }
+        
+        if ( nodeData.notes.length == 0 ) {
+            nodeData.notes = currentNode.notes;
         }
         
         //console.log(nodeData);
         
         $.ajax({
-            url : 'https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/stt-nodes',
+            url : 'https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/nodes',
             dataType : 'json',
             method : 'POST',
             'headers' : {
@@ -223,6 +277,8 @@ if( $('body').data("pagename") == 'admin') {
                 $('#nodeModal').modal('hide');
                 //empty the list and re-pull the updated data
                 $('#nodeList tbody').empty();
+                //empty the text field
+                $('#nodeInfoUpdate').val('');
                 getNodes( $('#islandPicker').val() );
             }
         })
@@ -244,6 +300,62 @@ if( $('body').data("pagename") == 'admin') {
 
     
     
+    //ADD ESTATES
+    
+    $('#addEstate').on('click', function() {
+        
+        if($('#islandPicker2').val() == "Choose an island"){
+            alert("Please select an island.");
+            return;
+        }
+        
+        if ( $('#estateNodes').val().length == 0 ) {
+            alert("The Nodes field can't be blank");
+            return;
+        }
+        
+        var estateNodes = $('#estateNodes').val().split(',');
+        
+        var estateData = {
+            estate_id : idGen(),
+            estate_name : $('#estateName').val(),
+            estate_area : $('#estateArea').val(),
+            nodes : estateNodes,
+            island : $('#islandPicker2').val()
+        }
+        
+        //console.log(estateData);
+                
+        url = "https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/estates/estate";
+        
+        $.ajax({
+            url : url,
+            dataType : 'json',
+            method : 'POST',
+            'headers' : {
+                'Authorization' : idToken,
+            },
+            contentType: 'application/json',
+            data : JSON.stringify(estateData),
+            success : function(data) {
+                alert(data.message); 
+                
+                $('#estateName').val('');
+                $('#estateArea').val('');
+                $('#estateNodes').val('');  
+                                
+            }
+        });
+        
+        
+        
+    })
+    
+    function idGen() {
+        var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+        var uniqid = randLetter + Date.now();
+        return uniqid;
+    }
     
     
 } //end ADMIN PAGE FUNCTION

@@ -4,6 +4,11 @@ body {
     font-size: 0.9375rem;
 }
 
+p {
+    font-size: 0.8125rem;
+    line-height: 1.8;
+}
+
 a {
 	text-decoration: none;
 }
@@ -11,6 +16,10 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    
+    &.no-max {
+        max-width: none;
+    }
 }
 
 input[type="email"], input[type="password"] {
@@ -72,6 +81,7 @@ header {
             font-weight: 600;
             color: $viyagray;
             margin-top: 1.5rem;
+            line-height: 1.4;
         }
         
     }
@@ -79,12 +89,35 @@ header {
     .jump {
         position: relative;
         
+        min-height: 200px;
+        background-color: $viyaorange;
+        
+        
+        @include media-breakpoint-down(md) {
+            margin-bottom: 1.875rem;
+        }
+        
+        &.status {
+            background: url(../img/check_status@2x.png);
+            background-size: cover;
+        }
+        
+        &.mifi {
+            background: url(../img/mifi_signup@2x.png);
+            background-size: cover;
+        }
+        &.wifi {
+            background: url(../img/free_wifi@2x.png);
+            background-size: cover;
+        }
+        
         .txt {
             position: absolute;
             top:0;
             left:0;
             width: 100%;
             height: 100%;
+            text-align: center;
             padding-left:1.875rem;
             padding-right:1.875rem;
             display: flex;
@@ -96,6 +129,9 @@ header {
                 color: white;
                 text-shadow: 2px 3px 4px rgba(0,0,0,0.5);
             }
+            @include media-breakpoint-up(md) {
+                text-align: left;
+            }
         }
     }
     
@@ -104,11 +140,19 @@ header {
     }
 }
 
-#serviceStatus {
+.section {
     .container {
         border-top:3px solid $viyaorange;
         padding-top:2.5rem;
         padding-bottom: 2.5rem;
+    }
+    
+    input {
+        width: 100%;
+        
+        @include media-breakpoint-up(md) {
+            width: auto;
+        }
     }
     
     h2 {
@@ -197,19 +241,17 @@ header {
         }
     }
     
-    #nodeMaps {
-        .node-map {
-            display:none;
-            
-            &.active {
-                display: block;
-                max-width: 100%;
-                height: auto;
-            }
+    #step2 {
+        opacity: 0.25;
+        pointer-events: none;
+        
+        &.active {
+            opacity: 1;
+            pointer-events: auto;
         }
     }
     
-    #step2, #step3 {
+    #step3 {
         display:none;
     }
     
@@ -217,7 +259,7 @@ header {
         height:40px;
         line-height: 40px;
         width: 100%;
-        
+        font-size: 1.2rem;
         @include media-breakpoint-up(md) {
             width: auto;
         }
@@ -233,8 +275,103 @@ header {
         strong {
             //color: $viyaorange;
         }
+        
+        .zoomable {
+            width: 100px;
+            height: auto;
+            display: block;
+        }
     }
     
+}
+
+#freeWifi {
+    h4 {
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        color: $viyablue;
+    }
+    
+    div[data-wifi-locations] {
+        display: none;
+        
+        &.active {
+            display: block;
+        }
+    }
+}
+
+.wifi-location {
+    margin-bottom: 15px;
+    background: url(../img/wifi-ring.png) no-repeat left 7px;
+    padding-left: 35px;
+    span {
+        font-size: 0.8125rem;
+        color:#444;
+        font-weight: 400;
+        
+        &.location-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: $viyaorange;
+            
+            &.soon {
+                color: $viyablue;
+            }
+        }
+    }
+}
+
+#wifiMaps {
+        .wifi-map {
+            display:none;
+            
+            &.active {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+#mifi {
+    background-color: #F4F0ED;
+    padding: 3rem 0;
+    
+    span.subhead {
+        font-weight: 600;
+        color: $viyaorange;
+    }
+    h3 {
+        font-weight: 700;
+        color: $viyablue;
+        margin: 5px 0;
+    }
+    
+    figure {
+        figcaption {
+            padding-top: 10px;
+            text-align: center;
+            font-size:0.8125rem;
+            font-weight: 600;
+        }
+        
+        @include media-breakpoint-down(sm) {
+         margin-top:1.875rem;
+            margin-bottom: 2.5rem;
+        }
+    }
+    
+    .btn {
+        background-color: $viyaorange;
+        font-size: 0.9375rem;
+        color: #fff;
+        font-weight: 600;
+        padding-left:1.875rem;
+        padding-right: 1.875rem;
+        height: 42px;
+        }
 }
 
 
@@ -247,6 +384,17 @@ header {
     
     input[type="submit"] {
         margin-top: 15px;
+    }
+}
+
+.add-node {
+    display: none;
+    padding-top:2rem;
+    
+    button {
+        width: 42px;
+        background: none;
+        border:none;
     }
 }
 
@@ -270,13 +418,24 @@ header {
     }
 }
 
-#nodeModal {
+#nodeModal, #nodeModalAdd {
     select {
         margin-bottom: 15px;
+    }
+    input[type="text"] {
+        font-size: 0.8125;
+        width: 100%;
     }
     textarea {
         width: 100%;
     }
+}
+
+
+footer {
+    padding:40px 0;
+    background: $viyablue;
+    
 }
 
 //AUTOCOMPLETE
