@@ -1,5 +1,6 @@
 
 var estates = new Array();
+var estateNames = new Array();
 var nodes = new Array();
 var island = "";
 
@@ -70,6 +71,10 @@ $(document).ready(function() {
         $('#step2').show();
        island = $(this).val();
         
+        $('input[name="estateInput"]').val('');
+        
+        $('#findEstate').attr('data-mapview', island);
+        
         //empty current estate array
         estates.length = 0;
         
@@ -80,11 +85,10 @@ $(document).ready(function() {
             return;
         } else {
             getEstates(island);
-        }
-        
-        
-        
-    })
+        }  
+    });
+    
+    
     
     function getEstates(i) {
         
@@ -97,21 +101,23 @@ $(document).ready(function() {
             dataType:'json',
             method : 'GET',
         }).done(function(data) {
-            //clear array
+            //clear arrays
             estates = [];
+            estateNames = [];
             
             estates = data.estates;
-           
-            var estateNames = new Array();
             
             for(var i=0;i < estates.length; i++) {
                 estateNames.push(estates[i]['estate_name']);
             }
             
+            
             $('#step2').addClass('active');
             
-            //autocomplete happens here
-            //var estateField = $('#estateInput')[0];
+            //destroy the autocomplete if it already exists
+            if(autoComp) {
+                autoComp.destroy();
+            }
             
             var autoComp = new autoComplete({
                 selector: 'input[name="estateInput"]',
@@ -160,7 +166,9 @@ $(document).ready(function() {
             island : island,
             nodes : nodeIds
         }
-    
+        
+        //console.log(JSON.stringify(data));
+        
         var url = "https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/estates/nodes";
         
         $.ajax({
@@ -177,10 +185,15 @@ $(document).ready(function() {
                 var selectedNodes = data.nodes;
                 var nodeDisplay = "";
                 
+                if(selectedNodes.length < 1 || selectedNodes.length ==0 ) {
+                    $('#step3').show();
+                    $('#nodeList').append("<div class=\"col\"><p><strong>Information on this node(s) is not available yet.</strong></p></div>");
+                    return;
+                }
 
                 for(var i=0; i < selectedNodes.length; i++) {
                     
-                    console.log(i.toString());
+                    //console.log(i.toString());
                     var status = selectedNodes[i].status;
                     var imgThumbUrl = 'img/' + island.toUpperCase() + '-80.jpg';
                     var imgOriginUrl = 'img/' + island.toUpperCase() + '@2x-80.jpg';
@@ -214,10 +227,10 @@ $(document).ready(function() {
                 var zooming = new Zooming({
                     bgColor : 'rgba(255,255,255,0.9)',
                     onBeforeOpen : function() {
-                      //$('.zoomable').show();  
+                      // 
                     },
                     onBeforeClose : function() {
-                        $('#nodeMapModal').modal('hide');
+                        //$('#nodeMapModal').modal('hide');
                     }
                 });
                 zooming.listen('.zoomable');
