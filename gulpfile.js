@@ -81,8 +81,7 @@ gulp.task('serve', ['copy','sass', 'js', 'html'], function() {
 
     gulp.watch("src/scss/**", ['sass']);
     gulp.watch("src/js/*.js", ['js-watch']);
-    //gulp.watch(, ['html]']);
-    gulp.watch(["src/*.html", "src/partials/*.html"], ['html']).on('change', browserSync.reload);
+    gulp.watch(["src/**/*.html"], ['html']).on('change', browserSync.reload);
 });
 
 gulp.task('default', ['serve']);

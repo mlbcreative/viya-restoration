@@ -5,7 +5,7 @@ body {
 }
 
 p {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     line-height: 1.8;
 }
 
@@ -229,6 +229,12 @@ header {
         
         &.step-wrap {
             background: #f3f3f3;
+            
+            h4 {
+                font-weight: 600;
+                color: $viyabrown;
+            }
+            
             @include media-breakpoint-up(lg) {
                 border:1px #d4d4d4 solid;
                 border-radius: 8px;
@@ -316,10 +322,7 @@ header {
         height:40px;
         line-height: 40px;
         width: 100%;
-        font-size: 1.2rem;
-        @include media-breakpoint-up(md) {
-            width: auto;
-        }
+        font-size: 1rem;
     }
     
     .nodeInfo {
@@ -329,6 +332,7 @@ header {
         margin-bottom: 0.9375rem;
         background: #f3f3f3;
         line-height: 2;
+        color: $viyabrown;
         strong {
             //color: $viyaorange;
         }
@@ -337,6 +341,10 @@ header {
             width: 100px;
             height: auto;
             display: block;
+        }
+        
+        span {
+            color: $viyablue;
         }
     }
     
@@ -362,6 +370,143 @@ header {
             color: $viyaorange;
         }
     }
+}
+
+#infoGraphic {
+    
+    .phase-explainer {
+        margin-top:2rem;
+        
+        h3 {
+            font-weight: 700;
+            color: $viyaorange;
+            text-align: center;
+            //margin-bottom: 1rem;
+        }
+        
+        
+    }
+    
+    #phaseOne {
+        color: $viyabrown;
+        margin-top: 2rem;
+        .node-explainer {
+            background: #efece7;
+            padding-top: 0.9375rem;
+            padding-bottom: 0.9375rem;
+            
+            h5 {
+                text-align: center;
+                font-weight: 700;
+            }
+            
+            p {
+                font-size: 0.9375rem;
+                font-weight: 400;
+                padding:0 1.875rem 0.9375rem;
+            }
+        }
+    }
+    
+    #phaseTwo {
+        color: $viyabrown;
+        
+        .phase2-notice {
+            margin: 3rem 0;
+            
+            p {
+                font-size: 0.9375rem;
+                font-weight: 600;
+                
+                &.next-steps {
+                    font-size: 1.125rem;
+                    font-weight: 400;
+                    margin:3rem 0 2rem;
+                }
+            }
+        }
+    }
+    
+    #phaseThree {
+        color: $viyabrown;
+        
+        h4 {
+            margin:1rem 0 2rem;
+        }
+    }
+    
+    .phase {
+        
+        &.phase-intro {
+            padding:0.9375rem 0 1.875rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+        }
+        
+        a.phase-toggle {
+            display: block;
+            background: $viyagray;
+            width: 100%;
+            padding: 0.9375rem 0;
+
+            font-size: 1.5rem;
+            color:#fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-align: center;
+            &.phase1 {
+                background: $viyabrown;
+            }
+            
+            &.phase2 {
+                background: $viyaltblue;
+            }
+            
+            &.phase3 {
+                background: $viyaorange;
+            }
+
+            &:hover {
+                text-decoration: none;
+                background: $viyablue;
+            }
+        }
+
+        .phase-content {
+            padding:0.9375rem 0;
+            
+            .step {
+                
+                p {
+                    font-size: 0.9375rem;
+                    font-weight: 600;
+                    padding:0.9375rem;
+                    
+                }
+            }
+            
+            p {
+                &.active {
+                        width: 80%;
+                        margin:1rem auto;
+                    font-size: 0.9375rem;
+                    font-weight: 600;
+                    }
+            }
+            
+            .down-arrow {
+                display: block;
+                margin:0 auto 1rem auto;
+            }
+        }
+        
+        
+    }
+    
+    
+    
 }
 
 .wifi-location {
@@ -493,6 +638,49 @@ header {
     }
 }
 
+
+#nodeMaps {
+    .map-select {
+        display: flex;
+        justify-content: center;
+        .option {
+            flex-shrink: 1;
+            padding:0.9375rem 0;
+            a {
+                color: $viyabrown;
+                font-weight: 600;
+                font-size: 1.25rem;
+                display: block;
+                padding:0 0.5rem;
+                border-right:2px solid $viyabrown;
+                
+                &[data-map="stj"] {
+                    border:none;
+                }
+                
+                &.active {
+                    color: $viyaorange;
+                }
+                &:hover {
+                    text-decoration: none;
+                    color: $viyablue;
+                }
+                
+            }
+        }
+    }
+    
+    .node-map-wrapper {
+        .node-map {
+            padding: 0.9375rem;
+            display: none;
+            
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
 
 footer {
     padding:40px 0;

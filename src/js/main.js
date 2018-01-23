@@ -22,7 +22,7 @@ $('.jump.mifi').on('click', function() {
 $(document).ready(function() {
     //initiate map zooms
     
-	//maps
+	//wifimaps
 	$('.map-option a').on('click', function() {
         
         $('.map-option a').removeClass('active');
@@ -39,6 +39,19 @@ $(document).ready(function() {
         $('.wifi-map[data-map="' + location + '"]').addClass('active');
         $('div[data-wifi-locations="' + location + '"]').addClass('active');
         
+        
+        return false;
+    })
+    
+    $('.map-link').on('click', function() {
+        
+        $('.node-map').removeClass('active');
+        
+        $('.node-map-wrapper').find($(this).attr('href')).addClass('active');
+        
+        $('.map-link').removeClass('active');
+        
+        $(this).addClass('active');
         
         return false;
     })
@@ -167,8 +180,6 @@ $(document).ready(function() {
             nodes : nodeIds
         }
         
-        //console.log(JSON.stringify(data));
-        
         var url = "https://35f3fdg005.execute-api.us-east-1.amazonaws.com/beta/estates/nodes";
         
         $.ajax({
@@ -201,25 +212,25 @@ $(document).ready(function() {
                     
                     nodeDisplay = '<div class="col-12 col-md-6 col-lg-3">'
                     nodeDisplay += '<div class="nodeInfo">';
-                    nodeDisplay += '<strong>Node: ' + selectedNodes[i].node_id + '</strong><br />';
-                    nodeDisplay += '<strong>Status: </strong>' + status.toUpperCase() + '<br />';
-                    nodeDisplay += '<strong>Additional Information: </strong><br />';
-                    nodeDisplay += '<p class="body-txt">' + selectedNodes[i].notes + '</p>';
-                    nodeDisplay += '<p>View Map<br /><a href="' + imgOriginUrl + '" id="islandImg_' + i.toString() + '">';
-                    
-                    nodeDisplay += '</a></p>';
+                    nodeDisplay += '<strong>Node: ' + '<span>' + selectedNodes[i].node_id + '</span></strong><br />';
+                    nodeDisplay += '<strong>Status: </strong>' + '<span>' +  status.toUpperCase() + '</span><br />';
+                    nodeDisplay += '<strong>Current Phase: </strong>';
+                    nodeDisplay += '<span>' + selectedNodes[i].notes + '</span>';
+//                    nodeDisplay += '<p>View Map<br /><a href="' + imgOriginUrl + '" id="islandImg_' + i.toString() + '">';
+//                    
+//                    nodeDisplay += '</a></p>';
                     nodeDisplay += '</div></div>';
                     
                     $('#step3').show();
                     
                     $('#nodeList').append(nodeDisplay);
                     
-                    var imgTarget = document.getElementById('islandImg_' + i.toString());
-                    var image = document.createElement("img");
-                    image.setAttribute("data-action", "zoom");
-                    image.setAttribute("class", "zoomable");
-                    image.setAttribute("src", imgThumbUrl);
-                    imgTarget.appendChild(image);
+//                    var imgTarget = document.getElementById('islandImg_' + i.toString());
+//                    var image = document.createElement("img");
+//                    image.setAttribute("data-action", "zoom");
+//                    image.setAttribute("class", "zoomable");
+//                    image.setAttribute("src", imgThumbUrl);
+//                    imgTarget.appendChild(image);
                     
                 }
                 
