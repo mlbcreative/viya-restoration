@@ -2,53 +2,27 @@
     
     <div class="container">
     
-        <div class="row">
+        <div class="row justify-content-center">
         
+            
             <div class="col-12 intro">
             
                 <h2>Internet, TV &amp; Phone Service Restoration Status</h2>
-                <p class="subhead orange">Get the latest updates on our progress in your area.</p>
-                
+                <p class="subhead orange">Get the latest updates on progress in your area. To learn more about the restoration process, <a href="infographic.html" target="_blank">click here.</a></p>
+            </div>
+            
+            <div class="col-10">
+            
+                    <p class="text-center">Nodes connect all of the private residences and businesses in your estate to the internet. During the restoration process, nodes must be restored before the connection to your home or business can be completed. The nodes listed below provide Internet, TV and phone service to your estate. Nodes are colored by which PHASE of the Restoration Process they are in as outlined above. If you have trouble identifying which node you are located in please contact Viya Customer Service at 340-777-VIYA (8492) and they will be able to inform you. * Information subject to change.</p>
+            
             </div>
             
         </div>
         
-        
         <div class="row">
-                 
-            <div class="col-12 col-lg-12">
-            
-                <div class="row">
-                    <div class="col-12 col-md-4 col-lg-3 steps" id="step1">
-                        <p>
-                            <span>Step 1</span>
-                            What island do you live on?
-                        </p>
-                        <select id="islandSelect">
-                            <option>Choose your island</option>
-                            <option value="stt">St. Thomas</option>
-                            <option value="stx">St. Croix</option>
-                            <option value="stj">St. John</option>
-                        </select>
-                    </div>
-            
-                <div class="col-12 col-md-8 col-lg-5 steps" id="step2">
-                    <p>
-                        <span>Step 2</span>
-                        What estate is your primary residence or business located in? 
-                    </p>
-
-                    <input type="text" id="estateInput" name="estateInput" placeholder="Ex: Agnes Fancy">
-                    
-                </div>
-                    
-                <div class="col-12 col-md-8 col-lg-5 steps" id="stjMessage">
-                    <h4>St. John information<br />coming soon.</h4>
-                </div>
-                
-                <div class="col-12 col-md-12 col-lg-4 steps" id="notSure">
-                    <p>
-                        <span>Find Your Estate</span>
+            <div class="col-12 col-md-4 col-lg-4 steps" id="notSure">
+                <p>
+                        <span>Don't know your estate?</span>
                         Not sure what estate you reside in? Use the maps below.
                     </p>
                     
@@ -75,19 +49,46 @@
                             </figure>
                             
                         </div>
-                        
+            </div>
+        </div>
+            <div class="col-12 col-md-8 col-lg-7 offset-lg-1 steps step-wrap">
+                <p>
+                     <span>Know your estate?</span>
+                        </p>
+                <div class="row">
+                 
+                    <div class="col-12">
+            
+                <div class="row">
+                    <div class="col-12  col-lg-4 steps" id="step1">
+                        <p>
+                            <span>Step 1</span>
+                            What island do you live on?
+                        </p>
+                        <select id="islandSelect">
+                            <option>Choose your island</option>
+                            <option value="stt">St. Thomas</option>
+                            <option value="stx">St. Croix</option>
+                            <option value="stj">St. John</option>
+                        </select>
                     </div>
+            
+                <div class="col-12  col-lg-8 steps" id="step2">
+                    <p>
+                        <span>Step 2</span>
+                        What estate is your primary residence or business located in? 
+                    </p>
+
+                    <input type="text" id="estateInput" name="estateInput" placeholder="Ex: Agnes Fancy">
+                    
+                </div>
+                    
+                <div class="col-12 col-md-8 col-lg-5 steps" id="stjMessage">
+                    <h4>St. John information<br />coming soon.</h4>
                 </div>
                 
+                
 
-                <div class="col-12 steps" id="step3">
-                    <p>
-                        <span>Restoration Status</span>
-                    </p>
-                    <p class="body-txt">Nodes connect all of the private residences and businesses in your estate to the internet. During the restoration process, nodes must be restored before the connection to your home or business can be completed. The nodes listed below provide Internet, TV and phone service to your estate. Nodes are colored by which PHASE of the Restoration Process they are in as outlined above.  If you have trouble identifying which node you are located in please contact Viya Customer Service at 340-777-VIYA (8492) and they will be able to inform you.
-* Information subject to change.</p>
-                    <div id="nodeList" class="row"></div>
-                </div>
 
                 
                 
@@ -95,6 +96,20 @@
             </div>
             
         </div>
+                </div>
+                
+            
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12 steps" id="step3">
+                    <p>
+                        <span>Restoration Status</span>
+                    </p>
+                    
+                    <div id="nodeList" class="row"></div>
+                </div>
         </div>
         
     </div>

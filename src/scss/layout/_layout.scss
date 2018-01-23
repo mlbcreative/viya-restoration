@@ -11,6 +11,10 @@ p {
 
 a {
 	text-decoration: none;
+    color: $viyablue;
+    &:link {
+        color: $viyablue;
+    }
 }
 
 img {
@@ -200,9 +204,9 @@ header {
     }
     
     .steps {
-        padding-top:30px;
-        padding-bottom:30px;
-        border-top:1px solid #d4d4d4;
+        padding-top:20px;
+        padding-bottom:20px;
+        //border-top:1px solid #d4d4d4;
         
         @include media-breakpoint-up(md) {
             border-top:none;
@@ -221,6 +225,14 @@ header {
             &.body-txt {
                 font-weight: 400;
             }    
+        }
+        
+        &.step-wrap {
+            background: #f3f3f3;
+            @include media-breakpoint-up(lg) {
+                border:1px #d4d4d4 solid;
+                border-radius: 8px;
+            }
         }
         
     }
@@ -284,6 +296,11 @@ header {
     
     #notSure {
         background: #f3f3f3;
+        border-right: 2px solid #d4d4d4;
+        @include media-breakpoint-up(lg) {
+                border:1px #d4d4d4 solid;
+                border-radius: 8px;
+            }
         
         figure {
             figcaption {
