@@ -456,6 +456,30 @@ header {
             text-transform: uppercase;
             font-weight: 700;
             text-align: center;
+            
+            position:relative;
+            
+            i.toggle-arrow {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top:50%;
+                right:20px;
+                background: url('../img/phase-toggle.png') center center no-repeat;
+                -webkit-transform: translateY(-50%) rotate(0deg);
+                transform: translateY(-50%) rotate(0deg);
+                -webkit-transition: transform 300ms ease-in-out;
+                transition: transform 300ms ease-in-out;
+            }
+            
+            
+            &.expanded {
+                i {
+                  -webkit-transform: translateY(-50%) rotate(180deg);
+                    transform: translateY(-50%) rotate(180deg);  
+                }
+            }
+            
             &.phase1 {
                 background: $viyabrown;
             }

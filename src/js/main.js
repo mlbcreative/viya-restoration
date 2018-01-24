@@ -54,6 +54,10 @@ $(document).ready(function() {
         $(this).addClass('active');
         
         return false;
+    });
+    
+    $('.phase-toggle').on('click', function() {
+        $(this).toggleClass('expanded');
     })
 
 	$('.hotspot-locations ul li').on('tap click', function(){
