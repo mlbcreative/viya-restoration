@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
 
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+<!--        <script src="js/vendor/modernizr-2.8.3.min.js"></script>-->
     </head>
     <body data-pagename="admin">
         
@@ -25,17 +25,29 @@
         
         <div class="container" id="nodeEditor">
             <div class="row">
-                <div class="col">
+                <div class="col-12">
                     
                     <h5>Welcome to the Viya USVI Restoration Admin Panel</h5>
                     <p>From here you can update the status of each node in the USVI. To get started, please pick the island you'd like to update.</p>
                     
-                    <select id="islandPicker">
-                        <option>Choose an island</option>
-                        <option value="stt">St.Thomas</option>
-                        <option value="stx">St.Croix</option>
-                        <option value="stj">St.John</option>
-                    </select>
+                    <div class="row">
+                    
+                        <div class="col-12 col-md-3">
+                        
+                            <select id="islandPicker">
+                                <option>Choose an island</option>
+                                <option value="stt">St.Thomas</option>
+                                <option value="stx">St.Croix</option>
+                                <option value="stj">St.John</option>
+                            </select>
+                            
+                        </div>
+                        
+                        <div class="col-12 col-md-9">
+                            <input type="text" placeholder="Filter Nodes by Node ID" id="nodeFilter" maxlength="5">
+                        </div>
+                        
+                    </div>
                 
                 </div>
             </div>

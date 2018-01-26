@@ -162,7 +162,7 @@ if( $('body').data("pagename") == 'admin') {
             var nodeNotes = nodes[i].notes;
             
             var tableRow;
-            tableRow = '<tr><td>';
+            tableRow = '<tr class="node-row" data-node-id="' + nodeId + '"><td>';
             tableRow += nodeId
             tableRow += '</td><td>';
             tableRow += nodeStatus
@@ -346,6 +346,22 @@ if( $('body').data("pagename") == 'admin') {
                                 
             }
         });
+        
+        
+        
+    })
+    
+    $('#nodeFilter').on('change keyup', function() {
+        
+        var filterVal = $(this).val().toUpperCase();
+        
+        $(".node-row").each(function(i) {
+            var rowId = $(this).data('node-id').toString();
+            
+            if( rowId.indexOf(filterVal) == -1 ) {
+                $(this).hide();
+            } else ($(this).show());
+        })
         
         
         

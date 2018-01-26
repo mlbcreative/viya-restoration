@@ -58,6 +58,20 @@ $(document).ready(function() {
     
     $('.phase-toggle').on('click', function() {
         $(this).toggleClass('expanded');
+        
+        var elemToToggle = $(this).attr('href');
+        $(elemToToggle).collapse('toggle');
+        
+        //return false;
+    })
+    
+    $('.question').on('click', function() {
+        $(this).toggleClass('expanded');
+        
+        var elemToToggle = $(this).attr('href');
+        $(elemToToggle).collapse('toggle');
+        
+        //return false;
     })
 
 	$('.hotspot-locations ul li').on('tap click', function(){
@@ -91,6 +105,14 @@ $(document).ready(function() {
         $('input[name="estateInput"]').val('');
         
         $('#findEstate').attr('data-mapview', island);
+        
+        //change the map links and node maps
+        var anchorName = "#"+island;
+        
+        $('a.map-link').removeClass('active');
+        $('a[href="' + anchorName + '"]').addClass('active');
+        $('.node-map').removeClass('active');
+        $(anchorName).addClass('active');
         
         //empty current estate array
         estates.length = 0;
@@ -220,14 +242,19 @@ $(document).ready(function() {
                     nodeDisplay += '<strong>Status: </strong>' + '<span>' +  status.toUpperCase() + '</span><br />';
                     nodeDisplay += '<strong>Current Phase: </strong>';
                     nodeDisplay += '<span>' + selectedNodes[i].notes + '</span>';
-//                    nodeDisplay += '<p>View Map<br /><a href="' + imgOriginUrl + '" id="islandImg_' + i.toString() + '">';
-//                    
-//                    nodeDisplay += '</a></p>';
+                    nodeDisplay += '<p><a href="#" class="view-map">View Map';
+                    nodeDisplay += '</a></p>';
                     nodeDisplay += '</div></div>';
                     
                     $('#step3').show();
                     
                     $('#nodeList').append(nodeDisplay);
+                    
+                    $('body').off('click').on('click', '.view-map', function() {
+                        $(window).scrollTo('#nodeMaps', 500);
+                        return false;
+                        
+                    })
                     
 //                    var imgTarget = document.getElementById('islandImg_' + i.toString());
 //                    var image = document.createElement("img");
