@@ -60,6 +60,19 @@ header {
         display: inline-block;
     }
 
+.special-message {
+    
+    
+    h2 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: 1.6;
+        color: $viyaorange;
+        padding:45px 60px;
+        text-align: center;
+    }
+}
+
 #pageTop {
     
     padding-bottom: 1.875rem;
@@ -356,7 +369,17 @@ header {
         font-weight: 600;
         margin-top: 2rem;
         margin-bottom: 2rem;
-        color: $viyablue;
+        color: $viyaorange;
+        border-bottom: #d4d4d4 solid 1px;
+        padding-bottom:10px;
+        
+        &.soon {
+            color: $viyablue;
+        }
+        
+        @include media-breakpoint-up(md) {
+            margin-top: 0;
+        }
     }
     
     div[data-wifi-locations] {
@@ -538,13 +561,20 @@ header {
     margin-bottom: 15px;
     background: url(../img/wifi-ring.png) no-repeat left 7px;
     padding-left: 35px;
+    padding-bottom: 15px;
+    line-height: 1.4;
+    &.soon {
+        background: url(../img/blue-circle.png) no-repeat left 7px;
+        background-size: 20px 20px;
+    }
+    
     span {
         font-size: 0.8125rem;
         color:#444;
         font-weight: 400;
         
         &.location-name {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
             color: $viyaorange;
             
