@@ -63,12 +63,12 @@ header {
 .special-message {
     
     
-    h2 {
+    p {
         font-size: 1.125rem;
-        font-weight: 700;
+        font-weight: 400;
         line-height: 1.6;
-        color: $viyaorange;
-        padding:45px 60px;
+        color: $viyablue;
+        padding:30px 60px;
         text-align: center;
     }
 }
@@ -414,6 +414,10 @@ header {
     #phaseOne {
         color: $viyabrown;
         margin-top: 2rem;
+        
+        .broken-line {
+            margin-top:2rem;
+        }
         .node-explainer {
             background: #efece7;
             padding-top: 0.9375rem;
@@ -456,6 +460,10 @@ header {
         
         h4 {
             margin:1rem 0 2rem;
+        }
+        
+        ._123 {
+            margin-top: 2rem;
         }
     }
     
