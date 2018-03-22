@@ -117,14 +117,16 @@ $(document).ready(function() {
         //empty current estate array
         estates.length = 0;
         
-        if(island == "stj") {
-            $('#step2').hide();
-            $('#stjMessage').show();
-            estates.length = 0;
-            return;
-        } else {
-            getEstates(island);
-        }  
+//        if(island == "stj") {
+//            $('#step2').hide();
+//            $('#stjMessage').show();
+//            estates.length = 0;
+//            return;
+//        } else {
+//            getEstates(island);
+//        }
+        
+        getEstates(island);
     });
     
     
